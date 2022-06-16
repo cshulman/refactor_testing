@@ -10,7 +10,7 @@ spec:
   source:
     path: overlays/production_clusters
     repoURL: git@github.com:cshulman/refactor_testing.git
-    targetRevision: first-kustomize
+    targetRevision: second-kustomize
   syncPolicy:
     automated: {}
     syncOptions:
