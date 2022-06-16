@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+# Add all cluster "applications" so management cluster can configure via gitops
+- ../../bases/gitops_managed_clusters
+
+# Add configurations for management cluster
+- ../all_clusters # adds all cluster apps
+- ../../bases/tekton # add anything that is only for management clusters
+
+commonAnnotations:
+  environment: management
+
+patchesStrategicMerge:
+# Don't apply crb to give devs cluster admin, only cluster-reader will apply
+- |-
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: ocpdevs-cluster-admin
+  $patch: delete
