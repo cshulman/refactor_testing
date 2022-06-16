@@ -8,9 +8,9 @@ spec:
     server: https://api.nonprod.01q7.p1.openshiftapps.com:6443
   project: default
   source:
-    path: overlays/nonprod_clusters
+    path: ./bases/all_clusters
     repoURL: git@github.com:cshulman/refactor_testing.git
-    targetRevision: HEAD
+    targetRevision: first-kustomize
   syncPolicy:
     automated: {}
     syncOptions:
