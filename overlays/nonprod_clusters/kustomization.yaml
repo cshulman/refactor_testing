@@ -1,7 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- ../all_clusters # adds all cluster apps
+- ../all_clusters # adds overlays for all clusters to nonprod clusters
+- ../application_clusters # adds overlays for application clusters to nonprod clusters
 
 commonAnnotations:
-  environment: nonprod
+  environment: nonprod-clusters
